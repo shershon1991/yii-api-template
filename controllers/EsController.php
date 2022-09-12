@@ -28,7 +28,14 @@ class EsController extends Controller
     // 更新配置的映射
     public function actionUpdateMap()
     {
-        var_dump(TestEs::updateMapping());
+        $properties = [];
+        var_dump(TestEs::updateMapping($properties));
+    }
+
+    // 获取配置的映射
+    public function actionGetMap()
+    {
+        var_dump(TestEs::getMapping());
     }
 
     // 插入数据
@@ -59,8 +66,7 @@ class EsController extends Controller
     // 查询数据
     public function actionGetData()
     {
-        $where = ['=', 'id', 1];
+        $where = ['=', 'id', 2];
         var_dump(TestEs::getList($where));
     }
-
 }

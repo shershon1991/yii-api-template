@@ -85,13 +85,13 @@ abstract class ElasticsearchBase extends ActiveRecord
     }
 
     /**
-     * 添加映射字段
+     * 更新配置的映射
      *
      * @param $properties
      * @return mixed|void
      * @throws \yii\base\InvalidConfigException
      */
-    public static function putMapping($properties)
+    public static function updateMapping($properties)
     {
         if (empty($properties) || !is_array($properties)) {
             return;
@@ -102,22 +102,6 @@ abstract class ElasticsearchBase extends ActiveRecord
             $command->createIndex(static::index(), static::indexShards());
         }
         return $command->setMapping(static::index(), static::type(), $properties);
-    }
-
-    /**
-     * 更新配置的映射
-     *
-     * @return mixed
-     * @throws \yii\base\InvalidConfigException
-     */
-    public static function updateMapping()
-    {
-        $db      = static::getDb();
-        $command = $db->createCommand();
-        if (!$command->indexExists(static::index())) {
-            $command->createIndex(static::index(), static::indexShards());
-        }
-        return $command->setMapping(static::index(), static::type(), static::mapConfig());
     }
 
     /**
