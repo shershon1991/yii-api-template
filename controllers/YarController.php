@@ -3,7 +3,6 @@
 namespace app\controllers;
 
 use app\common\rpc\YarServer;
-use app\models\User;
 use Yii;
 use yii\web\Controller;
 use app\common\rpc\YarApi;

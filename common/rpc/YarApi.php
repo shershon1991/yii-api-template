@@ -16,7 +16,7 @@ class YarApi
     public function api(array $condition)
     {
         $defult    = [
-            'url'   => 'http://backend.test:8084/rpc/index', //服务器URL
+            'url'   => 'http://47.108.49.196:8081/index.php?r=yar/rpc-server', //服务器URL
             'class' => '', //class名称
         ];
         $condition = array_merge($defult, $condition);
@@ -26,7 +26,7 @@ class YarApi
         $data['password'] = $this->password;
         $data['class']    = $condition['class'];
 
-        return new \Yar_Client("{$condition['url']}?rpctoken={$this->rpcEncode($data)}");
+        return new \Yar_Client("{$condition['url']}&rpc_token={$this->rpcEncode($data)}");
     }
 
     /**

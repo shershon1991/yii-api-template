@@ -39,7 +39,7 @@ class YarServer
             }
             $server = new \Yar_Server(new $data['class']());
             $server->handle();
-            return ['code' => 0, 'msg' => 'success', 'data' => []];
+            exit();
         } catch (Exception $e) {
             return ['code' => -1, 'msg' => $e->getMessage(), 'data' => []];
         }
@@ -57,9 +57,9 @@ class YarServer
             return false;
         }
         //验证IP
-        if (!in_array(Yii::$app->request->userIP, $this->ipArr)) {
+        /*if (!in_array(Yii::$app->request->userIP, $this->ipArr)) {
             return false;
-        }
+        }*/
         //有效时间
         if ((time() - $param['time']) > $this->activeTime) {
             return false;
