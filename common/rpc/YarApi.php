@@ -11,7 +11,7 @@ class YarApi
      * 密码
      * @var string
      */
-    private $password = 'Add25f37';
+    private $password = 'shershon-rpc-token';
 
     public function api(array $condition)
     {
